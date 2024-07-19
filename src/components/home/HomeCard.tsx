@@ -31,7 +31,7 @@ function HomeCard({mockUps}: IHomeCardProps): JSX.Element {
           </div>
           <Button contact={false} />
       </div>
-      <div className="flex space-x-[.5rem] mt-[18rem]">
+      <div className="flex space-x-[.5rem] md:mt-[18rem]">
         {mockUps.map((_, index) => (
             <button
                 key={index}
