@@ -11,7 +11,7 @@ export const featuresInfos = (t: TFunction): IFeatures => {
             { name: t('bedrooms'), value: t('bedroomsVal') },
             { name: t('bathrooms'), value: t('bathroomsVal') },
             { name: t('terrace'), value: '100 m²' },
-            { name: t('pool'), value: t('poolVal') },
+            { name: t('pool'), value: '7m x 3m' },
             { name: 'Sala', value: '30 m²' },
             { name: t('view'), value: t('viewVal') },
             { name: t('location'), value: 'Khao Phra Village' },
