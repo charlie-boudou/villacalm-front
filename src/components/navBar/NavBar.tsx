@@ -23,6 +23,7 @@ function NavBar({ isLoading }: INavBarProps): JSX.Element {
             <img src="logo-white-villa-calm.png" alt="logo" className="md:w-[8rem] md:h-[8rem] h-[4rem] w-[4rem]" />
           </Link>
           <div className="flex flex-col md:flex-row items-center space-y-[1rem] md:space-y-0 md:space-x-[3rem]">
+            <NavBarLinks link="/" value="ABOUT" isHome={isHome} />
             <NavBarLinks link="/construction" value="CONSTRUCTION" isHome={isHome} />
             <NavBarLinks link="/contact" value="CONTACT" isHome={isHome} />
           </div>

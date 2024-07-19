@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { Home } from './pages/Home';
+import { About } from './components/home/About';
 import { Construction } from './pages/Construction';
 import { Contact } from './pages/Contact';
 

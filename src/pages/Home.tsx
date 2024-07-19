@@ -19,6 +19,7 @@ function Home(): JSX.Element {
       setHomeCardMockUps(images.mockUps.slice(0, 5));
       setIsLoading(false);
     }
+    window.localStorage.setItem('scrollToAbout', 'false');
   }, [images.mockUps]);
 
   return (

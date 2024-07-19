@@ -26,15 +26,15 @@ export const groupImagesByFolder = (objectsList: ICloudinaryObj[]) => {
     return tab;
 };
 
-const folderOrder = [
-    'octobre-2023', 'novembre-2023', 'decembre-2023',
-    'janvier-2024', 'fevrier-2024', 'mars-2024',
-    'avril-2024', 'mai-2024', 'juin-2024',
-    'juillet-2024', 'aout-2024', 'septembre-2024',
-    'video'
-];
-
 export const sortFolders = (a: { folder: string }, b: { folder: string }) => {
+    const folderOrder = [
+      'octobre-2023', 'novembre-2023', 'decembre-2023',
+      'janvier-2024', 'fevrier-2024', 'mars-2024',
+      'avril-2024', 'mai-2024', 'juin-2024',
+      'juillet-2024', 'aout-2024', 'septembre-2024',
+      'video'
+    ];
+    
     const indexA = folderOrder.indexOf(a.folder);
     const indexB = folderOrder.indexOf(b.folder);
     

@@ -24,8 +24,12 @@ function About({mockUps}: IAboutProps): JSX.Element {
             <Modal photosList={mockUps} currentImage={currentImage} setCurrentImage={setCurrentImage} setViewerIsOpen={setViewerIsOpen} />
         )}
         <div id="about" className="w-full h-full flex flex-col items-start space-y-[1rem] p-[1rem] text-[1.5rem]">
-            <div className="w-full">
+            <div className="w-full pb-[4rem] md:pb-[3rem]">
                 <CarousselMockUps mockUps={mockUps} setCurrentImage={setCurrentImage} setViewerIsOpen={setViewerIsOpen} />
+            </div>
+            <div className="font-bold text-center w-full">
+              <p className="text-gold text-[4rem] md:text-[4rem] amsterdam">Villa <span className="darlene">CALM</span></p>
+              <p className="text-white text-[2rem] md:text-[2rem] darlene">Khao Phra Village, BOPHUT</p>
             </div>
             <div className="w-full md:w-[80%] m-auto md:p-[1rem]">
                 <div className="text-justify">
