@@ -17,11 +17,11 @@ function Modal({ photosList, currentImage, setCurrentImage, setViewerIsOpen }: I
     };
     
     const showPrevImage = () => {
-        setCurrentImage((currentImage - 1 + photosList.length) % photosList.length);
+        setCurrentImage(currentImage !== 0 ? currentImage - 1 : currentImage);
     };
 
     const showNextImage = () => {
-        setCurrentImage((currentImage + 1) % photosList.length);
+        setCurrentImage(currentImage !== photosList.length - 1 ? currentImage + 1 : currentImage);
     };
     
     return (
