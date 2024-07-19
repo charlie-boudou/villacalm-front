@@ -5,6 +5,8 @@ export const featuresInfos = (t: TFunction): IFeatures => {
     return {
         title: t('features'),
         list: [
+            { name: t('land'), value: '530 m²' },
+            { name: t('totalConstruction'), value: '270 m²' },
             { name: t('livingArea'), value: '170 m²' },
             { name: t('bedrooms'), value: t('bedroomsVal') },
             { name: t('bathrooms'), value: t('bathroomsVal') },
