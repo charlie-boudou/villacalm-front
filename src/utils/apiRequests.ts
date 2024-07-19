@@ -1,12 +1,13 @@
 import axios from "axios";
 import { IPhotosList } from "./types";
 import { addAllImages, addMockUps } from "../reducers/images";
-import { Dispatch, UnknownAction } from "@reduxjs/toolkit";
+import { UnknownAction } from "@reduxjs/toolkit";
 import { groupImagesByFolder } from "./functions";
+import { Dispatch, SetStateAction } from "react";
 
 const apiUrl = process.env.REACT_APP_BACK_API_URL;
 
-export const fetchMockUps = async (dispatch: Dispatch<UnknownAction>) => {
+export const fetchMockUps = async (dispatch: Dispatch<UnknownAction>, setIsLoading: Dispatch<SetStateAction<boolean>>) => {
     const tab: IPhotosList[] = [];
     try {
       const response = await axios.get(`${apiUrl}/pictures/mockup`, {
@@ -29,6 +30,7 @@ export const fetchMockUps = async (dispatch: Dispatch<UnknownAction>) => {
         tab.sort((a, b) => parseInt(a.title) - parseInt(b.title));
 
         dispatch(addMockUps(tab));
+        setIsLoading(false);
       }
     } catch (err) {
       console.log('error', err);
