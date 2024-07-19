@@ -24,7 +24,7 @@ function HomeCard({mockUps}: IHomeCardProps): JSX.Element {
       className="w-full h-screen flex flex-col items-center justify-center p-[1rem] bg-no-repeat bg-center bg-cover"
       style={{ backgroundImage: mockUps && mockUps.length > 0 ? `url(${mockUps[mockUpIndex].src})` : 'none' }}
     >
-      <div className="flex flex-col space-y-[1rem] items-end mt-[17rem] md:mt-[8rem]">
+      <div className="flex flex-col space-y-[1rem] items-end mt-[13rem] md:mt-[8rem]">
           <div className="font-bold text-center w-full">
               <p className="text-gold text-[4rem] md:text-[7rem] amsterdam mb-[1rem]">Villa <span className="darlene">CALM</span></p>
               <p className="text-white text-[2rem] md:text-[3rem] darlene">Khao Phra Village, BOPHUT</p>
