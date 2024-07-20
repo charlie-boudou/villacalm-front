@@ -40,6 +40,7 @@ export type IPhotosList = {
     width: number;
     height: number;
     title: string;
+    folder: string;
 }
 
 export type IAllImages = {

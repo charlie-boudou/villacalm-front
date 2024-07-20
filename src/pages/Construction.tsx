@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { fetchAllImages } from '../utils/apiRequests';
 import { useDispatch, useSelector } from "react-redux";
-import { IAllImages } from '../utils/types';
+import { IAllImages, IPhotosList } from '../utils/types';
 import { ConstructionCard } from "../components/construction/ConstructionCard";
-import { sortFolders } from "../utils/functions";
+import { getAllPictures, sortFolders } from "../utils/functions";
 import { Modal } from "../components/Modal";
 import { v4 } from "uuid";
 import { Loader } from "../assets/images/svgComponents";
@@ -13,9 +13,10 @@ function Construction (): JSX.Element {
   const images = useSelector((state: any) => state.images);
 
   const [folderList, setFolderList] = useState<IAllImages[]>([]);
+  const [allPictures, setAllPictures] = useState<IPhotosList[]>([]);
+  const [pictureName, setPictureName] = useState<string>('');
   const [currentImage, setCurrentImage] = useState<number>(0);
   const [viewerIsOpen, setViewerIsOpen] = useState<boolean>(false);
-  const[folderName, setFolderName] = useState<string>('octobre-2023');
 
   useEffect(() => {
     fetchAllImages(dispatch);
@@ -25,20 +26,33 @@ function Construction (): JSX.Element {
     if (images.allImages.length > 0) {
       const sortedFolder = [...images.allImages].sort(sortFolders);
       setFolderList(sortedFolder);
+
+      const allPicturesList = getAllPictures(sortedFolder);
+      setAllPictures(allPicturesList);
+
     }
   }, [images.allImages]);
+
+  useEffect(() => {
+    if (pictureName) {
+      const index = allPictures.findIndex(item => item.title === pictureName);
+      if (index !== -1) {
+        setCurrentImage(index);
+      }
+    }
+  }, [pictureName, allPictures]);
 
   return (
     <>
       {viewerIsOpen && (
-        <Modal photosList={folderList[folderList.findIndex(item => item.folder === folderName)].list} currentImage={currentImage} setCurrentImage={setCurrentImage} setViewerIsOpen={setViewerIsOpen}/>
+        <Modal photosList={allPictures} currentImage={currentImage} setCurrentImage={setCurrentImage} setViewerIsOpen={setViewerIsOpen}/>
       )}
       <div className="p-[1rem] w-full h-full flex flex-col space-y-[2rem]">
         {folderList.length > 0 ? (
           <>
             {folderList.map((folder: IAllImages) => (
               <div key={v4()}>
-                <ConstructionCard folderList={folder} setFolderderName={setFolderName} setCurrentImage={setCurrentImage} setViewerIsOpen={setViewerIsOpen}/>
+                <ConstructionCard folderList={folder} setPictureName={setPictureName} setViewerIsOpen={setViewerIsOpen}/>
               </div>
             ))}
           </>

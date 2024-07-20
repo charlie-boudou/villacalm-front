@@ -16,7 +16,7 @@ export const groupImagesByFolder = (objectsList: ICloudinaryObj[]) => {
       if (!foldersMap[folderName]) {
         foldersMap[folderName] = [];
       }
-      foldersMap[folderName].push({ src: secure_url, width, height, title: filename });
+      foldersMap[folderName].push({ src: secure_url, width, height, title: filename, folder });
     });
   
     for (const folderName in foldersMap) {
@@ -48,3 +48,25 @@ export const sortFolders = (a: { folder: string }, b: { folder: string }) => {
       return indexA - indexB;
     }
 };
+
+export const getAllPictures = (folderList: IAllImages[]) => {
+ const tab: IPhotosList[] = [];
+
+ folderList.map((folder: IAllImages) => {
+    if (folder.folder !== 'video') {
+      folder.list.map((picture: IPhotosList) => {
+        tab.push(picture);
+      })
+    }
+ });
+
+ return tab;
+};
+
+
+export const transformTitle = (value: string) => {
+  const folderName = value.replace('villa-calm/', '');
+  const title = folderName.charAt(0).toUpperCase() + folderName.slice(1);
+ 
+  return title.replace('-', ' ');
+ };

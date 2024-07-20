@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IPhotosList } from "./types";
+import { ICloudinaryObj, IPhotosList } from "./types";
 import { addAllImages, addMockUps } from "../reducers/images";
 import { UnknownAction } from "@reduxjs/toolkit";
 import { groupImagesByFolder } from "./functions";
@@ -18,12 +18,13 @@ export const fetchMockUps = async (dispatch: Dispatch<UnknownAction>, setIsLoadi
         }
       });
       if (response.data.result) {
-        response.data.datas.map((data: any) => {
+        response.data.datas.map((data: ICloudinaryObj) => {
           tab.push({
             title: data.filename,
             src: data.secure_url,
             width: data.width,
-            height: data.height
+            height: data.height,
+            folder: data.folder
           });
         });
 

@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction, useCallback, useEffect } from "react";
 import { IPhotosList } from "../utils/types";
 import { ChevronLeft, ChevronRight, Cross } from "../assets/images/svgComponents";
+import { transformTitle } from "../utils/functions";
 
 interface IModalProps {
   photosList: IPhotosList[];
@@ -52,13 +53,16 @@ function Modal({ photosList, currentImage, setCurrentImage, setViewerIsOpen }: I
             </div>
             <div className="flex-1 flex items-center justify-between w-full h-full">
                 <div className="p-[1rem]" onClick={showPrevImage}>
-                    <ChevronLeft className="cursor-pointer w-[2rem] h-[2rem] md:w-[4rem] md:h-[4rem] fill-black" />
+                    <ChevronLeft className="cursor-pointer w-[2rem] h-[2rem] md:w-[4rem] md:h-[4rem] fill-gold" />
                 </div>
                 <div className="flex-1" />
                 <div className="p-[1rem]" onClick={showNextImage}>
-                    <ChevronRight className="cursor-pointer w-[2rem] h-[2rem] md:w-[4rem] md:h-[4rem] fill-black" />
+                    <ChevronRight className="cursor-pointer w-[2rem] h-[2rem] md:w-[4rem] md:h-[4rem] fill-gold" />
                 </div>
             </div>
+            {!photosList[currentImage].folder.includes('maquettes') && (
+                <p className="text-black font-bold text-[2rem] darlene p-[1rem]">{transformTitle(photosList[currentImage].folder).toUpperCase()}</p>
+            )}
         </div>
     );
 }
