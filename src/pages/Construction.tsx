@@ -42,6 +42,7 @@ function Construction (): JSX.Element {
     }
   }, [pictureName, allPictures]);
 
+  console.log('folder', folderList);
   return (
     <>
       {viewerIsOpen && (
